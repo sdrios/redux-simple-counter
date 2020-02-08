@@ -1,13 +1,28 @@
 const initialState = {
-    value: 0
+    value: 0,
+    color: ''
 }
 
 const reducer = (state = initialState, action) => {
-    let { type } = action;
-    if (type === "INCREMENT") {
+    let { type, value, color } = action;
+    if (type === "CHANGEVALUE") {
         return {
-            value: state.value + 1
+            value: state.value + value,
+            color: state.color
         }
     }
-    return state
-}
+      if (type === "CHANGECOLOR"){  
+        return {
+            color: color,
+            value: state.value
+            }
+    }
+
+    if (type === "RESETVALUE"){  
+        return {
+            color: state.color,
+            value: value
+            }
+    }
+return state
+} 
